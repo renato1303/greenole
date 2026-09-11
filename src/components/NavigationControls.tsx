@@ -31,10 +31,9 @@ export const NavigationControls: React.FC<NavigationControlsProps> = ({
 }) => {
   const isLime = theme === 'lime';
   const isWhite = theme === 'white';
-  const isLight = isLime || isWhite;
 
   return (
-    <div className="absolute left-4 right-4 bottom-3 sm:left-12 sm:right-12 sm:bottom-6 md:left-16 md:right-16 md:bottom-7 flex items-center justify-between z-30 pointer-events-auto">
+    <div className="fixed sm:absolute left-3 right-3 bottom-3 sm:left-12 sm:right-12 sm:bottom-6 md:left-16 md:right-16 md:bottom-7 flex items-center justify-between z-50 pointer-events-auto bg-black/80 sm:bg-transparent backdrop-blur-lg sm:backdrop-blur-none px-4 py-3 sm:p-0 rounded-2xl sm:rounded-none shadow-2xl sm:shadow-none border border-white/15 sm:border-0">
       {/* Persistent Sitemap on Every Slide */}
       <div className="flex items-center gap-2 sm:gap-4 text-xs font-body">
         <a
@@ -43,16 +42,16 @@ export const NavigationControls: React.FC<NavigationControlsProps> = ({
           rel="noopener noreferrer"
           className={`inline-flex items-center gap-1.5 transition-colors font-medium ${
             isWhite
-              ? 'text-[#0d2213]/80 hover:text-[#0d2213]'
+              ? 'text-[#f6f4ec] sm:text-[#0d2213]/80 hover:text-white sm:hover:text-[#0d2213]'
               : isLime
-              ? 'text-[#0a0f0a]/80 hover:text-[#0a0f0a]'
-              : 'text-[#f6f4ec]/70 hover:text-[#c6ff4d]'
+              ? 'text-white sm:text-[#0a0f0a]/80 hover:text-white sm:hover:text-[#0a0f0a]'
+              : 'text-[#f6f4ec]/80 hover:text-[#c6ff4d]'
           }`}
           title="Site oficial"
         >
           <Globe
-            className="w-3.5 h-3.5"
-            style={{ color: isWhite ? '#0d2213' : isLime ? '#0a0f0a' : '#c6ff4d' }}
+            className="w-3.5 h-3.5 shrink-0"
+            style={{ color: isWhite || isLime ? '#c6ff4d' : '#c6ff4d' }}
           />
           <span className="font-mono text-[10px] sm:text-xs">sensesales.com.br</span>
         </a>
@@ -113,7 +112,7 @@ export const NavigationControls: React.FC<NavigationControlsProps> = ({
       </div>
 
       {/* Nav Buttons (Fullscreen, Prev, Next) */}
-      <div className="flex items-center gap-2 sm:gap-3">
+      <div className="flex items-center gap-2.5 sm:gap-3">
         {/* Fullscreen Toggle */}
         <button
           onClick={onToggleFullscreen}
@@ -134,17 +133,17 @@ export const NavigationControls: React.FC<NavigationControlsProps> = ({
           onClick={onPrev}
           disabled={currentIndex === 0}
           title="Slide anterior (Seta esquerda)"
-          className={`w-9 h-9 sm:w-11 sm:h-11 rounded-full border flex items-center justify-center transition-all ${
+          className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full border flex items-center justify-center transition-all ${
             currentIndex === 0
-              ? 'opacity-25 cursor-not-allowed border-transparent'
-              : isWhite
-              ? 'border-[#0d2213]/30 text-[#0d2213] hover:bg-[#0d2213]/10'
-              : isLime
-              ? 'border-[#0a0f0a]/30 text-[#0a0f0a] hover:bg-[#0a0f0a]/10'
-              : 'border-white/20 text-white hover:bg-white/10'
+              ? 'opacity-30 cursor-not-allowed border-transparent text-white/50'
+              : 'border-white/30 text-white bg-white/10 hover:bg-white/20 sm:bg-transparent sm:border-white/20'
           }`}
+          style={{
+            borderColor: currentIndex === 0 ? 'transparent' : isWhite ? 'rgba(13,34,19,0.3)' : isLime ? 'rgba(10,15,10,0.3)' : 'rgba(255,255,255,0.3)',
+            color: isWhite ? '#f6f4ec' : isLime ? '#0a0f0a' : '#ffffff'
+          }}
         >
-          <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+          <ChevronLeft className="w-5 h-5" />
         </button>
 
         {/* Next Slide Button */}
@@ -152,17 +151,18 @@ export const NavigationControls: React.FC<NavigationControlsProps> = ({
           onClick={onNext}
           disabled={currentIndex === totalSlides - 1}
           title="Próximo slide (Seta direita)"
-          className={`w-9 h-9 sm:w-11 sm:h-11 rounded-full border flex items-center justify-center transition-all ${
+          className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full border flex items-center justify-center transition-all font-bold ${
             currentIndex === totalSlides - 1
-              ? 'opacity-25 cursor-not-allowed border-transparent'
-              : isWhite
-              ? 'border-[#0d2213]/30 text-[#0d2213] hover:bg-[#0d2213]/10'
-              : isLime
-              ? 'border-[#0a0f0a]/30 text-[#0a0f0a] hover:bg-[#0a0f0a]/10'
-              : 'border-white/20 text-white hover:bg-white/10'
+              ? 'opacity-30 cursor-not-allowed border-transparent text-white/50'
+              : 'border-white/30 text-white bg-white/10 hover:bg-white/20 sm:bg-transparent'
           }`}
+          style={{
+            borderColor: currentIndex === totalSlides - 1 ? 'transparent' : isWhite ? 'rgba(13,34,19,0.3)' : isLime ? 'rgba(10,15,10,0.3)' : 'rgba(255,255,255,0.3)',
+            color: isWhite ? '#f6f4ec' : isLime ? '#0a0f0a' : '#ffffff',
+            backgroundColor: isLime ? '#0a0f0a' : isWhite ? '#0d2213' : 'rgba(255,255,255,0.15)'
+          }}
         >
-          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+          <ChevronRight className="w-5 h-5" style={{ color: isLime || isWhite ? '#c6ff4d' : '#ffffff' }} />
         </button>
       </div>
     </div>
