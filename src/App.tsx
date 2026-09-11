@@ -33,23 +33,28 @@ export default function App() {
   const totalSlides = SLIDES_CONFIG.length;
   const currentSlide = SLIDES_CONFIG[currentSlideIndex];
 
-  // Touch swipe refs
-  const touchStartX = useRef<number>(0);
-  const touchEndX = useRef<number>(0);
-
   // Navigation handlers
   const goToSlide = useCallback((index: number) => {
     if (index >= 0 && index < totalSlides) {
       setCurrentSlideIndex(index);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [totalSlides]);
 
   const nextSlide = useCallback(() => {
-    setCurrentSlideIndex((prev) => Math.min(prev + 1, totalSlides - 1));
+    setCurrentSlideIndex((prev) => {
+      const next = Math.min(prev + 1, totalSlides - 1);
+      return next;
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [totalSlides]);
 
   const prevSlide = useCallback(() => {
-    setCurrentSlideIndex((prev) => Math.max(prev - 1, 0));
+    setCurrentSlideIndex((prev) => {
+      const next = Math.max(prev - 1, 0);
+      return next;
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   // Toggle fullscreen
@@ -109,30 +114,6 @@ export default function App() {
     return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
   }, []);
 
-  // Touch handlers for mobile swipe
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.targetTouches[0].clientX;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    touchEndX.current = e.targetTouches[0].clientX;
-  };
-
-  const handleTouchEnd = () => {
-    if (!touchStartX.current || !touchEndX.current) return;
-    const distance = touchStartX.current - touchEndX.current;
-    const minSwipeDistance = 50;
-
-    if (distance > minSwipeDistance) {
-      nextSlide();
-    } else if (distance < -minSwipeDistance) {
-      prevSlide();
-    }
-
-    touchStartX.current = 0;
-    touchEndX.current = 0;
-  };
-
   // Render active slide component
   const renderSlideContent = () => {
     switch (currentSlide.id) {
@@ -190,15 +171,12 @@ export default function App() {
   const progressPercentage = ((currentSlideIndex + 1) / totalSlides) * 100;
 
   return (
-    <div className="w-screen h-screen bg-[#000] flex items-center justify-center overflow-hidden select-none p-0">
-      {/* 16:9 Presentation Stage with Mobile Support */}
+    <div className="w-screen min-h-screen bg-[#000] flex flex-col items-center justify-between overflow-y-auto select-none p-0">
+      {/* 16:9 Presentation Stage with Mobile Vertical Scroll Support */}
       <div
         ref={containerRef}
         id="presentation-frame"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-        className={`relative w-full h-full sm:w-[min(96vw,170.67vh)] sm:aspect-video sm:max-h-[94vh] rounded-none sm:rounded-2xl overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.85)] border-0 sm:border flex flex-col justify-between transition-colors duration-500 ${
+        className={`relative w-full min-h-screen sm:min-h-0 sm:w-[min(96vw,170.67vh)] sm:aspect-video sm:max-h-[94vh] rounded-none sm:rounded-2xl overflow-y-auto sm:overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.85)] border-0 sm:border flex flex-col justify-between transition-colors duration-500 pb-20 sm:pb-0 ${
           currentSlide.theme === 'white'
             ? 'border-[#0d2213]/15'
             : currentSlide.theme === 'lime'
@@ -240,7 +218,7 @@ export default function App() {
         </div>
 
         {/* Slide Canvas Content */}
-        <div className="w-full h-full relative overflow-hidden pb-14 sm:pb-20">
+        <div className="w-full flex-1 relative overflow-y-auto sm:overflow-hidden pt-4 pb-16 sm:pb-20">
           {renderSlideContent()}
         </div>
 
