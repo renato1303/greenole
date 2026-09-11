@@ -258,7 +258,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     initial: 'A',
     role: 'Estratégia & Mídia',
     photo: '/allan.jpeg',
-    focus: 'Especialista em Direcionando e Posicionamento de marca, entregando de forma macro estratégias para crescimento da operação e otimizações dos fluxos de operação.'
+    focus: 'Especialista em Direcionamento e Posicionamento de marca, entregando de forma macro estratégias para crescimento da operação e otimizações dos fluxos de operação.'
   }
 ];
 

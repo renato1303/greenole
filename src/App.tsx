@@ -173,7 +173,7 @@ export default function App() {
       <div
         ref={containerRef}
         id="presentation-frame"
-        className={`relative w-[min(96vw,177.78vh)] aspect-video max-h-[96vh] rounded-2xl overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.85)] border flex flex-col justify-between transition-colors duration-500 ${
+        className={`relative w-[min(96vw,170.67vh)] aspect-video max-h-[90vh] sm:max-h-[94vh] rounded-2xl overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.85)] border flex flex-col justify-between transition-colors duration-500 ${
           currentSlide.theme === 'white'
             ? 'border-[#0d2213]/15'
             : currentSlide.theme === 'lime'
