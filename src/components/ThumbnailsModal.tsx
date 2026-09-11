@@ -45,6 +45,8 @@ export const ThumbnailsModal: React.FC<ThumbnailsModalProps> = ({
             const themeBg =
               slide.theme === 'lime'
                 ? 'bg-[#c6ff4d] text-[#0a0f0a]'
+                : slide.theme === 'white'
+                ? 'bg-[#f6f4ec] text-[#0d2213] border-[#0d2213]/25'
                 : slide.theme === 'green-deep'
                 ? 'bg-[#0d2213] text-[#f6f4ec]'
                 : slide.theme === 'green-mid'

@@ -16,14 +16,14 @@ export const SLIDES_CONFIG: SlideData[] = [
   {
     id: 'who-we-are',
     number: '02',
-    title: 'Performance e produto de lançamento sob o mesmo teto',
+    title: 'Estratégia e crescimento com base no que realmente funciona',
     kicker: 'Quem é a Sense Sales',
-    theme: 'black',
+    theme: 'white',
     brandbar: '02 · Sense Sales',
     speakerNotes: [
-      'Não somos uma agência tradicional de postagens nem uma assessoria isolada de tráfego.',
-      'Conectamos a ponta de compra de mídia direta à conversão comercial.',
-      'Tudo orientado a dados, CPL (custo por lead) e ROI de pipeline.'
+      'Somos estrategistas e especialistas em crescimento unindo negócios, marketing, vendas e tecnologia.',
+      'Metodologia baseada em experimentação prática e adaptação contínua, sem achismos.',
+      'Abordagem sem fórmulas prontas, adaptada ao cenário real para gerar resultados mensuráveis e sustentáveis.'
     ]
   },
   {
@@ -32,20 +32,59 @@ export const SLIDES_CONFIG: SlideData[] = [
     title: 'Um time, dois papéis complementares',
     kicker: 'Quem conduz o projeto',
     theme: 'black',
-    brandbar: '03 · Sense Sales',
+    brandbar: '03 · Squad Dedicado',
     speakerNotes: [
       'Apresentar Renato e Allan como pontos de contato diretos e sêniores.',
-      'Sem intermediários júniores: quem desenha a estratégia é quem executa.',
-      'Canais ágeis de comunicação: canal dedicado no Slack/WhatsApp e reuniões semanais.'
+      'Renato: Automação & Growth, especialista em arquitetura de infraestrutura digital e resolução de alta complexidade.',
+      'Allan: Estratégia & Mídia, especialista em direcionamento, posicionamento de marca e crescimento macro da operação.'
+    ]
+  },
+  {
+    id: 'portfolio-1',
+    number: '04',
+    title: 'Empresas e marcas que aceleramos',
+    kicker: 'Portfólio · Painel 01',
+    theme: 'white',
+    brandbar: '04 · Portfólio 01',
+    speakerNotes: [
+      'Apresentar o primeiro painel de marcas atendidas pelo nosso squad.',
+      'Destaque para empresas de tecnologia, sustentabilidade e serviços B2B.',
+      'Metodologia comprovada de aquisição e autoridade de marca.'
+    ]
+  },
+  {
+    id: 'portfolio-2',
+    number: '05',
+    title: 'Empresas e marcas que aceleramos',
+    kicker: 'Portfólio · Painel 02',
+    theme: 'white',
+    brandbar: '05 · Portfólio 02',
+    speakerNotes: [
+      'Apresentar o segundo painel de marcas aceleradas.',
+      'Casos de sucesso em tráfego qualificado, retenção e posicionamento comercial.',
+      'Validação de modelos em diferentes mercados e verticais.'
+    ]
+  },
+  {
+    id: 'portfolio-3',
+    number: '06',
+    title: 'Empresas e marcas que aceleramos',
+    kicker: 'Portfólio · Painel 03',
+    theme: 'white',
+    brandbar: '06 · Portfólio 03',
+    speakerNotes: [
+      'Apresentar o terceiro painel de marcas de grande porte e autoridade consolidada.',
+      'Experiência em operações de alta escala e complexidade de mercado.',
+      'Reforçar como essa mesma maturidade estratégica será aplicada na Greenole.'
     ]
   },
   {
     id: 'context',
-    number: '04',
+    number: '07',
     title: 'Vender autoridade antes de vender produto',
     kicker: 'Contexto & Oportunidade',
     theme: 'green-deep',
-    brandbar: '04 · Contexto',
+    brandbar: '07 · Contexto',
     speakerNotes: [
       'No mercado B2B, a decisão de compra é complexa e exige confiança prévia.',
       'O webinar funciona como o grande catalisador de autoridade da Greenole.',
@@ -54,11 +93,11 @@ export const SLIDES_CONFIG: SlideData[] = [
   },
   {
     id: 'macro-methodology',
-    number: '05',
+    number: '08',
     title: 'Três fases, do discovery ao lançamento',
     kicker: 'Como trabalhamos',
-    theme: 'green-mid',
-    brandbar: '05 · Metodologia',
+    theme: 'white',
+    brandbar: '08 · Metodologia',
     speakerNotes: [
       'Visão macro do projeto ao longo dos 90 dias.',
       'Mês 1 é a fundação técnica e arquitetura sem brechas.',
@@ -68,11 +107,11 @@ export const SLIDES_CONFIG: SlideData[] = [
   },
   {
     id: 'week1-discovery',
-    number: '06',
+    number: '09',
     title: 'Discovery & Alinhamento Estratégico',
     kicker: 'Semana 1 · Início 15 de setembro',
     theme: 'black',
-    brandbar: '06 · Fase 1 — Estruturação',
+    brandbar: '09 · Fase 1 — Estruturação',
     speakerNotes: [
       'Na Semana 1, mapeamos a fundo o ICP (Perfil de Cliente Ideal) da Greenole.',
       'Análise dos principais concorrentes e posicionamento de valor.',
@@ -81,11 +120,11 @@ export const SLIDES_CONFIG: SlideData[] = [
   },
   {
     id: 'weeks2-3-tactical',
-    number: '07',
+    number: '10',
     title: 'Infraestrutura do lançamento',
     kicker: 'Semanas 2 e 3 · Tático',
     theme: 'green-deep',
-    brandbar: '07 · Fase 1 — Estruturação',
+    brandbar: '10 · Fase 1 — Estruturação',
     speakerNotes: [
       'Construção da esteira técnica completa.',
       'Páginas de captura com tempo de carregamento ultrarrápido e mobile-first.',
@@ -95,11 +134,11 @@ export const SLIDES_CONFIG: SlideData[] = [
   },
   {
     id: 'week4-warmup',
-    number: '08',
+    number: '11',
     title: 'De pé para o aquecimento',
     kicker: 'Semana 4',
     theme: 'black',
-    brandbar: '08 · Fase 1 — Estruturação',
+    brandbar: '11 · Fase 1 — Estruturação',
     speakerNotes: [
       'Virada de chave no final do primeiro mês.',
       'Start nas primeiras campanhas de tráfego teste e pré-aquecimento.',
@@ -108,11 +147,11 @@ export const SLIDES_CONFIG: SlideData[] = [
   },
   {
     id: 'month2-warmup',
-    number: '09',
+    number: '12',
     title: 'Geração de leads e aquecimento de audiência',
     kicker: 'Mês 2',
-    theme: 'green-mid',
-    brandbar: '09 · Fase 2 — Aquecimento',
+    theme: 'white',
+    brandbar: '12 · Fase 2 — Aquecimento',
     speakerNotes: [
       'Foco total em volume com qualidade e CPL controlado.',
       'Nutrição contínua nos canais (Grupo VIP WhatsApp + E-mails semanais).',
@@ -121,11 +160,11 @@ export const SLIDES_CONFIG: SlideData[] = [
   },
   {
     id: 'month3-launch',
-    number: '10',
+    number: '13',
     title: 'O mês do lançamento',
     kicker: 'Mês 3',
     theme: 'black',
-    brandbar: '10 · Fase 3 — Lançamento',
+    brandbar: '13 · Fase 3 — Lançamento',
     speakerNotes: [
       'Pico da operação: intensificação de verba e frequência de lembretes.',
       'War room ao vivo durante o webinar para suporte a dúvidas e links.',
@@ -133,26 +172,12 @@ export const SLIDES_CONFIG: SlideData[] = [
     ]
   },
   {
-    id: 'ecosystem',
-    number: '11',
-    title: 'Sitemap da presença digital',
-    kicker: 'Onde a Greenole vai aparecer',
-    theme: 'green-deep',
-    brandbar: '11 · Presença Digital',
-    speakerNotes: [
-      'Visão holística dos pontos de contato do cliente com a Greenole.',
-      'Site/LP como hub central de conversão.',
-      'WhatsApp para taxas de abertura acima de 90%.',
-      'Instagram, Meta e LinkedIn como motores de atração e autoridade.'
-    ]
-  },
-  {
     id: 'deliverables',
-    number: '12',
+    number: '14',
     title: 'Entregáveis da proposta',
     kicker: 'O que está incluso',
-    theme: 'black',
-    brandbar: '12 · Escopo',
+    theme: 'white',
+    brandbar: '14 · Escopo',
     speakerNotes: [
       'Clareza total do escopo contratual sem letras miúdas.',
       'Cobrimos todas as 4 frentes: Estratégia, Técnico, Mídia e Conversão.',
@@ -161,29 +186,62 @@ export const SLIDES_CONFIG: SlideData[] = [
   },
   {
     id: 'investment',
-    number: '13',
+    number: '15',
     title: 'Três meses, um só objetivo: o lançamento',
     kicker: 'Investimento & Condições',
     theme: 'lime',
-    brandbar: '13 · Investimento',
+    brandbar: '15 · Investimento',
     speakerNotes: [
-      'Apresentar os dois formatos comerciais com transparência.',
-      'Destacar a vantagem de US$ 300 de desconto no pagamento à vista.',
-      'Lembrar que o investimento em mídia é faturado diretamente com as plataformas (Meta/Google).'
+      'Apresentar a modalidade de investimento recorrente.',
+      'Previsibilidade e fluxo de caixa parcelado em 3 vezes de US$ 1.200.',
+      'Apoio integral de Renato & Allan por 90 dias.'
     ]
   },
   {
-    id: 'next-steps',
-    number: '14',
-    title: 'Prontos para lançar a Greenole',
-    kicker: 'Vamos começar?',
+    id: 'investment-onetime',
+    number: '16',
+    title: 'Condição Especial · Pagamento à Vista',
+    kicker: 'Investimento & Condições',
     theme: 'black',
-    brandbar: '14 · Próximos Passos',
+    brandbar: '16 · Pagamento À Vista',
     speakerNotes: [
-      'Call to action claro: assinatura/aprovação do acordo.',
-      'Liberação de acessos (Meta Business, GA4, Ferramenta de e-mail/CRM) até dia 14.',
-      'Kick-off oficial agendado para o dia 15 de setembro.'
+      'Apresentar a modalidade de pagamento integral à vista por US$ 3.300.',
+      'Destacar a economia imediata de US$ 300.',
+      'Garantia de prioridade e kick-off em 15 de setembro.'
     ]
+  }
+];
+
+export const PORTFOLIO_ITEMS = [
+  {
+    id: 'portfolio-1',
+    slideNumber: '04',
+    brandbar: '04 · Portfólio 01',
+    kicker: 'Portfólio · Painel 01',
+    title: 'Empresas e marcas que aceleramos',
+    subtitle: 'Histórico comprovado de impacto: operações que confiaram na nossa estratégia, tráfego e tecnologia para escalar resultados.',
+    image: '/1.jpeg',
+    tag: 'Painel 01 · Institucional & Tecnologia'
+  },
+  {
+    id: 'portfolio-2',
+    slideNumber: '05',
+    brandbar: '05 · Portfólio 02',
+    kicker: 'Portfólio · Painel 02',
+    title: 'Empresas e marcas que aceleramos',
+    subtitle: 'Marcas aceleradas com funis de alta conversão, posicionamento estratégico de mercado e geração contínua de leads qualificados.',
+    image: '/2.jpeg',
+    tag: 'Painel 02 · Escala & Crescimento'
+  },
+  {
+    id: 'portfolio-3',
+    slideNumber: '06',
+    brandbar: '06 · Portfólio 03',
+    kicker: 'Portfólio · Painel 03',
+    title: 'Empresas e marcas que aceleramos',
+    subtitle: 'Grandes marcas e players de mercado atendidos com esteiras completas de automação, mídia de performance e autoridade de marca.',
+    image: '/3.jpeg',
+    tag: 'Painel 03 · Marcas Consolidadas'
   }
 ];
 
@@ -191,26 +249,16 @@ export const TEAM_MEMBERS: TeamMember[] = [
   {
     name: 'Renato',
     initial: 'R',
-    role: 'Estratégia & Growth',
-    focus: 'Arquitetura do lançamento, narrativa comercial do webinar, definição de ICP e alinhamento de conversão com o time Greenole.',
-    deliverables: [
-      'Discovery e definição do ICP',
-      'Roteiro estratégico do webinar',
-      'Copywriting de páginas e e-mails',
-      'Condução dos Sprints semanais'
-    ]
+    role: 'Automação & Growth',
+    photo: '/link%20ceo.jpg',
+    focus: 'Especialista em Arquitetura de infraestrutura digital, entregando otimizações diárias e resoluções de demandas de alta complexidade sistêmica'
   },
   {
     name: 'Allan',
     initial: 'A',
-    role: 'Mídia & Automação',
-    focus: 'Gestão de tráfego pago (Meta/Google), infraestrutura de dados server-side, fluxos de WhatsApp e automações de CRM.',
-    deliverables: [
-      'Setup avançado de CAPI & GA4',
-      'Gestão diária de campanhas de tráfego',
-      'Automações de WhatsApp & E-mail',
-      'Relatórios e dashboards de CPL'
-    ]
+    role: 'Estratégia & Mídia',
+    photo: '/allan.jpeg',
+    focus: 'Especialista em Direcionando e Posicionamento de marca, entregando de forma macro estratégias para crescimento da operação e otimizações dos fluxos de operação.'
   }
 ];
 
@@ -317,13 +365,6 @@ export const DELIVERABLES_LIST: DeliverableItem[] = [
     timeline: 'Mês 3'
   },
   {
-    id: 'd9',
-    title: 'War Room ao Vivo no Dia do Webinar',
-    category: 'Conversão',
-    detail: 'Monitoramento em tempo real com apoio técnico a links, chat, suporte a leads e checagem de conversão.',
-    timeline: 'Mês 3 (D-Day)'
-  },
-  {
     id: 'd10',
     title: 'Reuniões Semanais de Sprint & Dashboard de Métricas',
     category: 'Estratégia',
@@ -342,8 +383,7 @@ export const PRICING_OPTIONS: PricingOption[] = [
     benefits: [
       'Acompanhamento completo por 90 dias',
       'Todas as fases inclusas (Estruturação, Aquecimento e Lançamento)',
-      'Sprints semanais e canal direto com Renato & Allan',
-      'Faturamento parcelado em 3 parcelas mensais de US$ 1.200'
+      'Sprints semanais e canal direto com Renato & Allan'
     ],
     isHighlighted: false
   },

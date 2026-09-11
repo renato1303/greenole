@@ -1,6 +1,5 @@
 import React from 'react';
 import { TEAM_MEMBERS } from '../../data/slidesData';
-import { MessageSquare, ShieldCheck, Sparkles } from 'lucide-react';
 
 export const TeamSlide: React.FC = () => {
   return (
@@ -29,68 +28,61 @@ export const TeamSlide: React.FC = () => {
       </div>
 
       {/* Team Cards Grid */}
-      <div className="my-auto py-4 sm:py-6 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+      <div className="my-auto py-6 sm:py-8 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
         {TEAM_MEMBERS.map((member) => (
           <div
             key={member.name}
-            className="p-6 sm:p-7 rounded-xl bg-white/[0.03] border border-white/10 hover:border-[#c6ff4d]/30 transition-all flex flex-col justify-between relative group"
+            className="p-7 sm:p-8 md:p-9 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#c6ff4d]/40 transition-all duration-300 flex flex-col justify-center relative group shadow-xl"
           >
-            <div className="flex items-start gap-4 sm:gap-5">
-              {/* Monogram */}
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-[#c6ff4d] flex items-center justify-center font-display text-2xl sm:text-3xl font-bold text-[#c6ff4d] bg-[#c6ff4d]/10 shrink-0 group-hover:scale-105 transition-transform">
-                {member.initial}
+            <div className="flex items-start gap-5 sm:gap-6">
+              {/* Member Avatar / Photo - Ampliado */}
+              <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full border-2 border-[#c6ff4d] overflow-hidden shrink-0 group-hover:scale-105 transition-transform duration-300 shadow-xl shadow-[#c6ff4d]/15 bg-[#0d2213]">
+                {member.photo ? (
+                  <img
+                    src={member.photo}
+                    alt={member.name}
+                    className="w-full h-full object-cover object-center"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      const parent = e.currentTarget.parentElement;
+                      if (parent) {
+                        const fallback = parent.querySelector('.fallback-monogram');
+                        if (fallback) (fallback as HTMLElement).style.display = 'flex';
+                      }
+                    }}
+                  />
+                ) : null}
+                <div
+                  className={`fallback-monogram w-full h-full items-center justify-center font-display text-3xl sm:text-4xl font-bold text-[#c6ff4d] bg-[#c6ff4d]/10 ${
+                    member.photo ? 'hidden' : 'flex'
+                  }`}
+                >
+                  {member.initial}
+                </div>
               </div>
 
-              <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#f6f4ec]">
+              <div className="space-y-2 flex-1">
+                <div>
+                  <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[#f6f4ec]">
                     {member.name}
                   </h3>
-                  <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-[#c6ff4d]/15 text-[#c6ff4d] border border-[#c6ff4d]/30">
-                    Lead
-                  </span>
+                  <p className="font-display text-sm sm:text-base md:text-lg text-[#c6ff4d] font-semibold tracking-wide mt-1">
+                    {member.role}
+                  </p>
                 </div>
-                <p className="font-display text-sm sm:text-base text-[#c6ff4d] font-semibold">
-                  {member.role}
-                </p>
-                <p className="text-xs sm:text-sm text-[#f6f4ec]/70 pt-2 font-body leading-relaxed">
+                <p className="text-xs sm:text-sm md:text-base text-[#f6f4ec]/80 pt-1 font-body leading-relaxed">
                   {member.focus}
                 </p>
-              </div>
-            </div>
-
-            {/* Deliverables tags */}
-            <div className="mt-6 pt-4 border-t border-white/10">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-[#f6f4ec]/40 block mb-2">
-                Frente de Entrega
-              </span>
-              <div className="flex flex-wrap gap-1.5">
-                {member.deliverables.map((item, idx) => (
-                  <span
-                    key={idx}
-                    className="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-xs text-[#f6f4ec]/80 font-body"
-                  >
-                    {item}
-                  </span>
-                ))}
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Governance & Communication Note */}
-      <div className="pt-4 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs sm:text-sm text-[#f6f4ec]/60 font-body">
-        <div className="flex items-center gap-3">
-          <span className="flex items-center gap-1.5 text-[#f6f4ec]/80">
-            <MessageSquare className="w-3.5 h-3.5 text-[#c6ff4d]" /> Canal Dedicado Slack/WhatsApp
-          </span>
-          <span>•</span>
-          <span className="flex items-center gap-1.5 text-[#f6f4ec]/80">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#c6ff4d]" /> Sprints Semanais de 30 min
-          </span>
-        </div>
-        <span className="text-[#c6ff4d]">Sem intermediários: foco e velocidade</span>
+      {/* Footer */}
+      <div className="pt-4 border-t border-white/15 flex items-center justify-between text-xs sm:text-sm text-[#f6f4ec]/60 font-body">
+        <span>Squad Executivo · Condução direta de ponta a ponta</span>
+        <span className="text-xs font-mono text-[#c6ff4d]">Greenole × Sense Sales</span>
       </div>
     </div>
   );

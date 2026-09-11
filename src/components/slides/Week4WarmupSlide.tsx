@@ -13,7 +13,7 @@ export const Week4WarmupSlide: React.FC = () => {
           </span>
         </div>
         <span className="text-xs font-mono tracking-wider text-[#f6f4ec]/50">
-          08 · Fase 1 — Estruturação
+          11 · Fase 1 — Estruturação
         </span>
       </div>
 

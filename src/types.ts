@@ -1,4 +1,4 @@
-export type SlideTheme = 'black' | 'green-deep' | 'green-mid' | 'lime';
+export type SlideTheme = 'black' | 'green-deep' | 'green-mid' | 'lime' | 'white';
 
 export interface SlideData {
   id: string;
@@ -15,7 +15,8 @@ export interface TeamMember {
   initial: string;
   role: string;
   focus: string;
-  deliverables: string[];
+  deliverables?: string[];
+  photo?: string;
 }
 
 export interface PhaseInfo {

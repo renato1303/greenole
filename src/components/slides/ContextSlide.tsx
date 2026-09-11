@@ -13,7 +13,7 @@ export const ContextSlide: React.FC = () => {
           </span>
         </div>
         <span className="text-xs font-mono tracking-wider text-[#f6f4ec]/50">
-          04 · Contexto
+          07 · Contexto
         </span>
       </div>
 

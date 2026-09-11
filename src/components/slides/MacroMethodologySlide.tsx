@@ -6,26 +6,26 @@ export const MacroMethodologySlide: React.FC = () => {
   const [activePhase, setActivePhase] = useState<number>(0);
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-8 sm:p-12 md:p-16 lg:p-20 overflow-hidden bg-[#123a1d]">
+    <div className="relative w-full h-full flex flex-col justify-between p-8 sm:p-12 md:p-16 lg:p-20 overflow-hidden bg-[#f6f4ec]">
       {/* Brand Bar */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#c6ff4d]" />
-          <span className="text-xs sm:text-sm font-medium tracking-wider uppercase text-[#f6f4ec]/70">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#0d2213]" />
+          <span className="text-xs sm:text-sm font-medium tracking-wider uppercase text-[#0d2213]/70">
             Metodologia &amp; Roadmap
           </span>
         </div>
-        <span className="text-xs font-mono tracking-wider text-[#f6f4ec]/50">
-          05 · Três Fases
+        <span className="text-xs font-mono tracking-wider text-[#0d2213]/50">
+          08 · Três Fases
         </span>
       </div>
 
       {/* Slide Head */}
       <div className="mt-4 sm:mt-6">
-        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#f6f4ec] max-w-3xl leading-[1.05]">
+        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#0d2213] max-w-3xl leading-[1.05]">
           Três fases, do discovery ao lançamento
         </h2>
-        <p className="mt-3 sm:mt-4 font-body text-base sm:text-lg text-[#f6f4ec]/80 max-w-2xl font-normal leading-relaxed">
+        <p className="mt-3 sm:mt-4 font-body text-base sm:text-lg text-[#233d28] max-w-2xl font-normal leading-relaxed">
           Uma esteira lógica e contínua ao longo de 90 dias: construímos a infraestrutura, atraímos os decisores e convertemos no evento.
         </p>
       </div>
@@ -38,45 +38,45 @@ export const MacroMethodologySlide: React.FC = () => {
             <div
               key={phase.id}
               onClick={() => setActivePhase(idx)}
-              className={`p-6 rounded-xl border transition-all cursor-pointer flex flex-col justify-between relative ${
+              className={`p-6 rounded-xl transition-all cursor-pointer flex flex-col justify-between relative ${
                 isSelected
-                  ? 'bg-black/40 border-[#c6ff4d] shadow-lg shadow-black/20'
-                  : 'bg-black/20 border-white/10 hover:border-white/20'
+                  ? 'bg-white border-2 border-[#0d2213] shadow-[0_12px_36px_rgba(13,34,19,0.1)] scale-[1.01]'
+                  : 'bg-white/80 border border-[#0d2213]/12 hover:border-[#0d2213]/30 shadow-sm'
               }`}
             >
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="font-display text-xs font-bold px-2 py-0.5 rounded bg-[#c6ff4d] text-[#0a0f0a]">
+                  <span className="font-display text-xs font-bold px-2.5 py-0.5 rounded bg-[#0d2213] text-[#c6ff4d]">
                     Fase {phase.number}
                   </span>
-                  <span className="text-xs font-mono text-[#f6f4ec]/60">
+                  <span className="text-xs font-mono text-[#0d2213]/60">
                     {phase.month}
                   </span>
                 </div>
 
-                <h3 className="font-display text-2xl font-bold text-[#f6f4ec] mt-1">
+                <h3 className="font-display text-2xl font-bold text-[#0d2213] mt-1">
                   {phase.title}
                 </h3>
-                <p className="mt-2 text-xs sm:text-sm text-[#f6f4ec]/70 leading-relaxed font-body">
+                <p className="mt-2 text-xs sm:text-sm text-[#2d4732] leading-relaxed font-body">
                   {phase.objective}
                 </p>
 
-                <div className="mt-4 pt-4 border-t border-white/10 space-y-2">
-                  <span className="text-[11px] uppercase tracking-wider text-[#c6ff4d] font-semibold block">
+                <div className="mt-4 pt-4 border-t border-[#0d2213]/10 space-y-2">
+                  <span className="text-[11px] uppercase tracking-wider text-[#164e22] font-bold block">
                     Principais Marcos:
                   </span>
                   {phase.highlights.map((item, hIdx) => (
-                    <div key={hIdx} className="flex items-start gap-2 text-xs text-[#f6f4ec]/85 font-body">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#c6ff4d] shrink-0 mt-0.5" />
+                    <div key={hIdx} className="flex items-start gap-2 text-xs text-[#0d2213]/90 font-medium font-body">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#164e22] shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="mt-5 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-[#f6f4ec]/60 font-body">
-                <span className="truncate pr-2"><strong className="text-[#f6f4ec]/90">Meta:</strong> {phase.kpis}</span>
-                <span className="text-[#c6ff4d] shrink-0">90d Total</span>
+              <div className="mt-5 pt-3 border-t border-[#0d2213]/10 flex items-center justify-between text-[11px] text-[#0d2213]/70 font-body">
+                <span className="truncate pr-2"><strong className="text-[#0d2213]">Meta:</strong> {phase.kpis}</span>
+                <span className="text-[#0d2213] font-bold shrink-0">90d Total</span>
               </div>
             </div>
           );
@@ -84,10 +84,10 @@ export const MacroMethodologySlide: React.FC = () => {
       </div>
 
       {/* Footer */}
-      <div className="pt-4 border-t border-white/15 flex items-center justify-between text-xs sm:text-sm text-[#f6f4ec]/60 font-body">
+      <div className="pt-4 border-t border-[#0d2213]/15 flex items-center justify-between text-xs sm:text-sm text-[#0d2213]/65 font-body">
         <span>Clique nos cards para alternar o foco da análise</span>
-        <span className="text-[#c6ff4d] flex items-center gap-1">
-          Execução em Ciclos Ágeis <ArrowRight className="w-3.5 h-3.5" />
+        <span className="text-[#0d2213] font-semibold flex items-center gap-1">
+          Execução em Ciclos Ágeis <ArrowRight className="w-3.5 h-3.5 text-[#164e22]" />
         </span>
       </div>
     </div>

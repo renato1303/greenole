@@ -15,16 +15,16 @@ import { CoverSlide } from './components/slides/CoverSlide';
 import { ContextSlide } from './components/slides/ContextSlide';
 import { WhoWeAreSlide } from './components/slides/WhoWeAreSlide';
 import { TeamSlide } from './components/slides/TeamSlide';
+import { PortfolioSlide } from './components/slides/PortfolioSlide';
 import { MacroMethodologySlide } from './components/slides/MacroMethodologySlide';
 import { Week1DiscoverySlide } from './components/slides/Week1DiscoverySlide';
 import { Weeks23TacticalSlide } from './components/slides/Weeks23TacticalSlide';
 import { Week4WarmupSlide } from './components/slides/Week4WarmupSlide';
 import { Month2WarmupSlide } from './components/slides/Month2WarmupSlide';
 import { Month3LaunchSlide } from './components/slides/Month3LaunchSlide';
-import { EcosystemSlide } from './components/slides/EcosystemSlide';
 import { DeliverablesSlide } from './components/slides/DeliverablesSlide';
 import { InvestmentSlide } from './components/slides/InvestmentSlide';
-import { NextStepsSlide } from './components/slides/NextStepsSlide';
+import { InvestmentOnetimeSlide } from './components/slides/InvestmentOnetimeSlide';
 
 export default function App() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
@@ -115,13 +115,19 @@ export default function App() {
   const renderSlideContent = () => {
     switch (currentSlide.id) {
       case 'cover':
-        return <CoverSlide />;
-      case 'context':
-        return <ContextSlide />;
+        return <CoverSlide onNext={nextSlide} />;
       case 'who-we-are':
         return <WhoWeAreSlide />;
       case 'team':
         return <TeamSlide />;
+      case 'portfolio-1':
+        return <PortfolioSlide index={0} />;
+      case 'portfolio-2':
+        return <PortfolioSlide index={1} />;
+      case 'portfolio-3':
+        return <PortfolioSlide index={2} />;
+      case 'context':
+        return <ContextSlide />;
       case 'macro-methodology':
         return <MacroMethodologySlide />;
       case 'week1-discovery':
@@ -134,8 +140,6 @@ export default function App() {
         return <Month2WarmupSlide />;
       case 'month3-launch':
         return <Month3LaunchSlide />;
-      case 'ecosystem':
-        return <EcosystemSlide />;
       case 'deliverables':
         return <DeliverablesSlide />;
       case 'investment':
@@ -147,8 +151,15 @@ export default function App() {
             }}
           />
         );
-      case 'next-steps':
-        return <NextStepsSlide onOpenAcceptanceModal={() => setIsAcceptanceOpen(true)} />;
+      case 'investment-onetime':
+        return (
+          <InvestmentOnetimeSlide
+            onSelect={() => {
+              setSelectedPlanForAcceptance('onetime');
+              setIsAcceptanceOpen(true);
+            }}
+          />
+        );
       default:
         return <CoverSlide onNext={nextSlide} />;
     }
@@ -162,11 +173,19 @@ export default function App() {
       <div
         ref={containerRef}
         id="presentation-frame"
-        className="relative w-[min(96vw,177.78vh)] aspect-video max-h-[96vh] rounded-2xl overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.85)] border border-white/10 flex flex-col justify-between"
+        className={`relative w-[min(96vw,177.78vh)] aspect-video max-h-[96vh] rounded-2xl overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.85)] border flex flex-col justify-between transition-colors duration-500 ${
+          currentSlide.theme === 'white'
+            ? 'border-[#0d2213]/15'
+            : currentSlide.theme === 'lime'
+            ? 'border-black/20'
+            : 'border-white/10'
+        }`}
         style={{
           backgroundColor:
             currentSlide.theme === 'lime'
               ? '#c6ff4d'
+              : currentSlide.theme === 'white'
+              ? '#f6f4ec'
               : currentSlide.theme === 'green-deep'
               ? '#0d2213'
               : currentSlide.theme === 'green-mid'
@@ -176,12 +195,21 @@ export default function App() {
         }}
       >
         {/* Top Progress Track */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-white/10 z-40">
+        <div
+          className={`absolute top-0 left-0 right-0 h-1 z-40 ${
+            currentSlide.theme === 'white' ? 'bg-black/10' : 'bg-white/10'
+          }`}
+        >
           <div
             className="h-full transition-all duration-500 ease-out"
             style={{
               width: `${progressPercentage}%`,
-              backgroundColor: currentSlide.theme === 'lime' ? '#0a0f0a' : '#c6ff4d'
+              backgroundColor:
+                currentSlide.theme === 'lime'
+                  ? '#0a0f0a'
+                  : currentSlide.theme === 'white'
+                  ? '#0d2213'
+                  : '#c6ff4d'
             }}
           />
         </div>

@@ -13,7 +13,7 @@ export const Weeks23TacticalSlide: React.FC = () => {
           </span>
         </div>
         <span className="text-xs font-mono tracking-wider text-[#f6f4ec]/50">
-          07 · Fase 1 — Estruturação
+          10 · Fase 1 — Estruturação
         </span>
       </div>
 

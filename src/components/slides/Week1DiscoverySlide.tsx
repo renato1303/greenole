@@ -13,7 +13,7 @@ export const Week1DiscoverySlide: React.FC = () => {
           </span>
         </div>
         <span className="text-xs font-mono tracking-wider text-[#f6f4ec]/50">
-          06 · Fase 1 — Estruturação
+          09 · Fase 1 — Estruturação
         </span>
       </div>
 
