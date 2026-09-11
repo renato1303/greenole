@@ -34,9 +34,9 @@ export const NavigationControls: React.FC<NavigationControlsProps> = ({
   const isLight = isLime || isWhite;
 
   return (
-    <div className="absolute left-6 right-6 bottom-4 sm:left-12 sm:right-12 sm:bottom-6 md:left-16 md:right-16 md:bottom-7 flex items-center justify-between z-30 pointer-events-auto">
+    <div className="absolute left-4 right-4 bottom-3 sm:left-12 sm:right-12 sm:bottom-6 md:left-16 md:right-16 md:bottom-7 flex items-center justify-between z-30 pointer-events-auto">
       {/* Persistent Sitemap on Every Slide */}
-      <div className="flex items-center flex-wrap gap-2.5 sm:gap-4 text-xs font-body">
+      <div className="flex items-center gap-2 sm:gap-4 text-xs font-body">
         <a
           href="https://sensesales.com.br"
           target="_blank"
@@ -54,7 +54,7 @@ export const NavigationControls: React.FC<NavigationControlsProps> = ({
             className="w-3.5 h-3.5"
             style={{ color: isWhite ? '#0d2213' : isLime ? '#0a0f0a' : '#c6ff4d' }}
           />
-          <span className="font-mono text-[11px] sm:text-xs">sensesales.com.br</span>
+          <span className="font-mono text-[10px] sm:text-xs">sensesales.com.br</span>
         </a>
 
         <span
@@ -69,7 +69,7 @@ export const NavigationControls: React.FC<NavigationControlsProps> = ({
           href="https://instagram.com/sensesales"
           target="_blank"
           rel="noopener noreferrer"
-          className={`inline-flex items-center gap-1.5 transition-colors font-medium ${
+          className={`hidden sm:inline-flex items-center gap-1.5 transition-colors font-medium ${
             isWhite
               ? 'text-[#0d2213]/80 hover:text-[#0d2213]'
               : isLime
@@ -82,7 +82,7 @@ export const NavigationControls: React.FC<NavigationControlsProps> = ({
             className="w-3.5 h-3.5"
             style={{ color: isWhite ? '#0d2213' : isLime ? '#0a0f0a' : '#c6ff4d' }}
           />
-          <span className="font-mono text-[11px] sm:text-xs">@sensesales</span>
+          <span className="font-mono text-xs">@sensesales</span>
         </a>
 
         <span
@@ -95,7 +95,7 @@ export const NavigationControls: React.FC<NavigationControlsProps> = ({
 
         <a
           href="mailto:contatosensesales@gmail.com"
-          className={`inline-flex items-center gap-1.5 transition-colors font-medium ${
+          className={`hidden md:inline-flex items-center gap-1.5 transition-colors font-medium ${
             isWhite
               ? 'text-[#0d2213]/80 hover:text-[#0d2213]'
               : isLime
@@ -108,7 +108,7 @@ export const NavigationControls: React.FC<NavigationControlsProps> = ({
             className="w-3.5 h-3.5"
             style={{ color: isWhite ? '#0d2213' : isLime ? '#0a0f0a' : '#c6ff4d' }}
           />
-          <span className="font-mono text-[11px] sm:text-xs">contatosensesales@gmail.com</span>
+          <span className="font-mono text-xs">contatosensesales@gmail.com</span>
         </a>
       </div>
 
@@ -118,7 +118,7 @@ export const NavigationControls: React.FC<NavigationControlsProps> = ({
         <button
           onClick={onToggleFullscreen}
           title={isFullscreen ? 'Sair da tela cheia (tecla F)' : 'Tela cheia (tecla F)'}
-          className={`p-2 rounded-full border transition-all ${
+          className={`p-2 rounded-full border transition-all hidden sm:flex items-center justify-center ${
             isWhite
               ? 'border-[#0d2213]/25 text-[#0d2213] hover:bg-[#0d2213]/10'
               : isLime
@@ -138,31 +138,31 @@ export const NavigationControls: React.FC<NavigationControlsProps> = ({
             currentIndex === 0
               ? 'opacity-25 cursor-not-allowed border-transparent'
               : isWhite
-              ? 'border-[#0d2213]/30 text-[#0d2213] hover:bg-[#0d2213]/15 hover:scale-105 active:scale-95'
+              ? 'border-[#0d2213]/30 text-[#0d2213] hover:bg-[#0d2213]/10'
               : isLime
-              ? 'border-[#0a0f0a]/30 text-[#0a0f0a] hover:bg-[#0a0f0a]/15 hover:scale-105 active:scale-95'
-              : 'border-white/20 text-[#f6f4ec] hover:bg-white/10 hover:border-white/40 hover:scale-105 active:scale-95'
+              ? 'border-[#0a0f0a]/30 text-[#0a0f0a] hover:bg-[#0a0f0a]/10'
+              : 'border-white/20 text-white hover:bg-white/10'
           }`}
         >
-          <ChevronLeft className="w-5 h-5" />
+          <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
 
         {/* Next Slide Button */}
         <button
           onClick={onNext}
           disabled={currentIndex === totalSlides - 1}
-          title="Próximo slide (Seta direita ou Espaço)"
-          className={`w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-all ${
+          title="Próximo slide (Seta direita)"
+          className={`w-9 h-9 sm:w-11 sm:h-11 rounded-full border flex items-center justify-center transition-all ${
             currentIndex === totalSlides - 1
-              ? 'opacity-25 cursor-not-allowed bg-transparent border border-white/20 text-white'
+              ? 'opacity-25 cursor-not-allowed border-transparent'
               : isWhite
-              ? 'bg-[#0d2213] text-[#c6ff4d] hover:bg-[#123a1d] hover:scale-105 active:scale-95 shadow-md shadow-[#0d2213]/25'
+              ? 'border-[#0d2213]/30 text-[#0d2213] hover:bg-[#0d2213]/10'
               : isLime
-              ? 'bg-[#0a0f0a] text-[#c6ff4d] hover:bg-black hover:scale-105 active:scale-95 shadow-md'
-              : 'bg-[#c6ff4d] text-[#0a0f0a] hover:bg-[#c6ff4d]/90 hover:scale-105 active:scale-95 shadow-md shadow-[#c6ff4d]/20'
+              ? 'border-[#0a0f0a]/30 text-[#0a0f0a] hover:bg-[#0a0f0a]/10'
+              : 'border-white/20 text-white hover:bg-white/10'
           }`}
         >
-          <ChevronRight className="w-5 h-5 font-bold" />
+          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
       </div>
     </div>
