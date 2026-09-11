@@ -1,0 +1,6 @@
+{
+  "name": "Proposta Comercial — Sense Sales × Greenole",
+  "description": "Apresentação executiva e proposta comercial da Sense Sales para o lançamento do webinar da Greenole.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

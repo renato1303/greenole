@@ -1,0 +1,229 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { SLIDES_CONFIG } from './data/slidesData';
+import { NavigationControls } from './components/NavigationControls';
+import { ThumbnailsModal } from './components/ThumbnailsModal';
+import { SpeakerNotesDrawer } from './components/SpeakerNotesDrawer';
+import { AcceptanceModal } from './components/AcceptanceModal';
+
+// Slides
+import { CoverSlide } from './components/slides/CoverSlide';
+import { ContextSlide } from './components/slides/ContextSlide';
+import { WhoWeAreSlide } from './components/slides/WhoWeAreSlide';
+import { TeamSlide } from './components/slides/TeamSlide';
+import { MacroMethodologySlide } from './components/slides/MacroMethodologySlide';
+import { Week1DiscoverySlide } from './components/slides/Week1DiscoverySlide';
+import { Weeks23TacticalSlide } from './components/slides/Weeks23TacticalSlide';
+import { Week4WarmupSlide } from './components/slides/Week4WarmupSlide';
+import { Month2WarmupSlide } from './components/slides/Month2WarmupSlide';
+import { Month3LaunchSlide } from './components/slides/Month3LaunchSlide';
+import { EcosystemSlide } from './components/slides/EcosystemSlide';
+import { DeliverablesSlide } from './components/slides/DeliverablesSlide';
+import { InvestmentSlide } from './components/slides/InvestmentSlide';
+import { NextStepsSlide } from './components/slides/NextStepsSlide';
+
+export default function App() {
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isGridOpen, setIsGridOpen] = useState(false);
+  const [isNotesOpen, setIsNotesOpen] = useState(false);
+  const [isAcceptanceOpen, setIsAcceptanceOpen] = useState(false);
+  const [selectedPlanForAcceptance, setSelectedPlanForAcceptance] = useState<'monthly' | 'onetime'>('onetime');
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const totalSlides = SLIDES_CONFIG.length;
+  const currentSlide = SLIDES_CONFIG[currentSlideIndex];
+
+  // Navigation handlers
+  const goToSlide = useCallback((index: number) => {
+    if (index >= 0 && index < totalSlides) {
+      setCurrentSlideIndex(index);
+    }
+  }, [totalSlides]);
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlideIndex((prev) => Math.min(prev + 1, totalSlides - 1));
+  }, [totalSlides]);
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlideIndex((prev) => Math.max(prev - 1, 0));
+  }, []);
+
+  // Toggle fullscreen
+  const toggleFullscreen = useCallback(() => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().then(() => setIsFullscreen(true)).catch(() => {});
+    } else {
+      document.exitFullscreen().then(() => setIsFullscreen(false)).catch(() => {});
+    }
+  }, []);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Avoid intercepting input fields inside modals
+      if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement)?.tagName)) {
+        return;
+      }
+
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        goToSlide(0);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        goToSlide(totalSlides - 1);
+      } else if (e.key.toLowerCase() === 'f') {
+        e.preventDefault();
+        toggleFullscreen();
+      } else if (e.key.toLowerCase() === 'g') {
+        e.preventDefault();
+        setIsGridOpen((prev) => !prev);
+      } else if (e.key.toLowerCase() === 'n') {
+        e.preventDefault();
+        setIsNotesOpen((prev) => !prev);
+      } else if (e.key === 'Escape') {
+        setIsGridOpen(false);
+        setIsNotesOpen(false);
+        setIsAcceptanceOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [nextSlide, prevSlide, goToSlide, totalSlides, toggleFullscreen]);
+
+  // Sync fullscreen change from browser
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, []);
+
+  // Render active slide component
+  const renderSlideContent = () => {
+    switch (currentSlide.id) {
+      case 'cover':
+        return <CoverSlide />;
+      case 'context':
+        return <ContextSlide />;
+      case 'who-we-are':
+        return <WhoWeAreSlide />;
+      case 'team':
+        return <TeamSlide />;
+      case 'macro-methodology':
+        return <MacroMethodologySlide />;
+      case 'week1-discovery':
+        return <Week1DiscoverySlide />;
+      case 'weeks2-3-tactical':
+        return <Weeks23TacticalSlide />;
+      case 'week4-warmup':
+        return <Week4WarmupSlide />;
+      case 'month2-warmup':
+        return <Month2WarmupSlide />;
+      case 'month3-launch':
+        return <Month3LaunchSlide />;
+      case 'ecosystem':
+        return <EcosystemSlide />;
+      case 'deliverables':
+        return <DeliverablesSlide />;
+      case 'investment':
+        return (
+          <InvestmentSlide
+            onSelectPlan={(plan) => {
+              setSelectedPlanForAcceptance(plan);
+              setIsAcceptanceOpen(true);
+            }}
+          />
+        );
+      case 'next-steps':
+        return <NextStepsSlide onOpenAcceptanceModal={() => setIsAcceptanceOpen(true)} />;
+      default:
+        return <CoverSlide onNext={nextSlide} />;
+    }
+  };
+
+  const progressPercentage = ((currentSlideIndex + 1) / totalSlides) * 100;
+
+  return (
+    <div className="w-screen h-screen bg-[#000] flex items-center justify-center overflow-hidden select-none">
+      {/* 16:9 Presentation Stage */}
+      <div
+        ref={containerRef}
+        id="presentation-frame"
+        className="relative w-[min(96vw,177.78vh)] aspect-video max-h-[96vh] rounded-2xl overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.85)] border border-white/10 flex flex-col justify-between"
+        style={{
+          backgroundColor:
+            currentSlide.theme === 'lime'
+              ? '#c6ff4d'
+              : currentSlide.theme === 'green-deep'
+              ? '#0d2213'
+              : currentSlide.theme === 'green-mid'
+              ? '#123a1d'
+              : '#07080a',
+          transition: 'background-color 0.45s ease'
+        }}
+      >
+        {/* Top Progress Track */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-white/10 z-40">
+          <div
+            className="h-full transition-all duration-500 ease-out"
+            style={{
+              width: `${progressPercentage}%`,
+              backgroundColor: currentSlide.theme === 'lime' ? '#0a0f0a' : '#c6ff4d'
+            }}
+          />
+        </div>
+
+        {/* Slide Canvas Content */}
+        <div className="w-full h-full relative overflow-hidden pb-16 sm:pb-20">
+          {renderSlideContent()}
+        </div>
+
+        {/* Navigation Bar */}
+        <NavigationControls
+          currentIndex={currentSlideIndex}
+          totalSlides={totalSlides}
+          theme={currentSlide.theme}
+          isFullscreen={isFullscreen}
+          onPrev={prevSlide}
+          onNext={nextSlide}
+          onToggleFullscreen={toggleFullscreen}
+        />
+
+        {/* Speaker Notes Overlay */}
+        <SpeakerNotesDrawer
+          isOpen={isNotesOpen}
+          currentIndex={currentSlideIndex}
+          onClose={() => setIsNotesOpen(false)}
+        />
+      </div>
+
+      {/* Grid Thumbnail Modal */}
+      <ThumbnailsModal
+        isOpen={isGridOpen}
+        currentIndex={currentSlideIndex}
+        onClose={() => setIsGridOpen(false)}
+        onSelectSlide={goToSlide}
+      />
+
+      {/* Proposal Acceptance Modal */}
+      <AcceptanceModal
+        isOpen={isAcceptanceOpen}
+        initialPlan={selectedPlanForAcceptance}
+        onClose={() => setIsAcceptanceOpen(false)}
+      />
+    </div>
+  );
+}
