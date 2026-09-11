@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PHASES_DATA } from '../../data/slidesData';
-import { CheckCircle2, ArrowRight, Clock, Target } from 'lucide-react';
+import { CheckCircle2, ArrowRight } from 'lucide-react';
 
 export const MacroMethodologySlide: React.FC = () => {
   const [activePhase, setActivePhase] = useState<number>(0);
@@ -72,11 +72,6 @@ export const MacroMethodologySlide: React.FC = () => {
                     </div>
                   ))}
                 </div>
-              </div>
-
-              <div className="mt-5 pt-3 border-t border-[#0d2213]/10 flex items-center justify-between text-[11px] text-[#0d2213]/70 font-body">
-                <span className="truncate pr-2"><strong className="text-[#0d2213]">Meta:</strong> {phase.kpis}</span>
-                <span className="text-[#0d2213] font-bold shrink-0">90d Total</span>
               </div>
             </div>
           );

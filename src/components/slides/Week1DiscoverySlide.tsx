@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, Search, BarChart3, Compass, CheckCircle } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 
 export const Week1DiscoverySlide: React.FC = () => {
   return (
@@ -30,65 +30,47 @@ export const Week1DiscoverySlide: React.FC = () => {
         </p>
       </div>
 
-      {/* 3 Detailed Items in Modern Rule-List Layout */}
+      {/* 3 Detailed Items in Modern Rule-List Layout (without right mini titles) */}
       <div className="my-auto py-4 sm:py-6 space-y-3 sm:space-y-4 max-w-5xl">
-        <div className="p-5 sm:p-6 rounded-xl bg-white/[0.03] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-[#c6ff4d]/30 transition-colors">
-          <div className="flex items-start gap-4">
-            <span className="font-display text-2xl sm:text-3xl font-bold text-[#c6ff4d] min-w-[2.5rem]">
-              01
-            </span>
-            <div>
-              <h3 className="font-display text-lg sm:text-xl font-semibold text-[#f6f4ec] flex items-center gap-2">
-                Entendimento Profundo do Público-Alvo (ICP)
-              </h3>
-              <p className="mt-1 text-xs sm:text-sm text-[#f6f4ec]/65 font-body leading-relaxed max-w-2xl">
-                Mapeamento das personas decisoras (Diretores, Gerentes de Sustentabilidade/Operações), seus medos, dores regulatórias e termos de busca exatos.
-              </p>
-            </div>
-          </div>
-          <div className="shrink-0 flex sm:flex-col items-center sm:items-end gap-1 text-xs font-mono text-[#c6ff4d]">
-            <span>Perfil de Compra</span>
-            <span className="text-[#f6f4ec]/40 hidden sm:inline">Dores Mapeadas</span>
+        <div className="p-5 sm:p-6 rounded-xl bg-white/[0.03] border border-white/10 flex items-start gap-4 hover:border-[#c6ff4d]/30 transition-colors">
+          <span className="font-display text-2xl sm:text-3xl font-bold text-[#c6ff4d] min-w-[2.5rem]">
+            01
+          </span>
+          <div>
+            <h3 className="font-display text-lg sm:text-xl font-semibold text-[#f6f4ec]">
+              Entendimento Profundo do Público-Alvo (ICP)
+            </h3>
+            <p className="mt-1 text-xs sm:text-sm text-[#f6f4ec]/65 font-body leading-relaxed max-w-3xl">
+              Mapeamento das personas decisoras (Diretores, Gerentes de Sustentabilidade/Operações), seus medos, dores regulatórias e termos de busca exatos.
+            </p>
           </div>
         </div>
 
-        <div className="p-5 sm:p-6 rounded-xl bg-white/[0.03] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-[#c6ff4d]/30 transition-colors">
-          <div className="flex items-start gap-4">
-            <span className="font-display text-2xl sm:text-3xl font-bold text-[#c6ff4d] min-w-[2.5rem]">
-              02
-            </span>
-            <div>
-              <h3 className="font-display text-lg sm:text-xl font-semibold text-[#f6f4ec] flex items-center gap-2">
-                Estudo de Mercado &amp; Benchmark Competitivo
-              </h3>
-              <p className="mt-1 text-xs sm:text-sm text-[#f6f4ec]/65 font-body leading-relaxed max-w-2xl">
-                Análise da comunicação dos principais players, formatos de webinar praticados no nicho e identificação do ângulo único da Greenole.
-              </p>
-            </div>
-          </div>
-          <div className="shrink-0 flex sm:flex-col items-center sm:items-end gap-1 text-xs font-mono text-[#c6ff4d]">
-            <span>Diferencial</span>
-            <span className="text-[#f6f4ec]/40 hidden sm:inline">Gap de Mercado</span>
+        <div className="p-5 sm:p-6 rounded-xl bg-white/[0.03] border border-white/10 flex items-start gap-4 hover:border-[#c6ff4d]/30 transition-colors">
+          <span className="font-display text-2xl sm:text-3xl font-bold text-[#c6ff4d] min-w-[2.5rem]">
+            02
+          </span>
+          <div>
+            <h3 className="font-display text-lg sm:text-xl font-semibold text-[#f6f4ec]">
+              Estudo de Mercado &amp; Benchmark Competitivo
+            </h3>
+            <p className="mt-1 text-xs sm:text-sm text-[#f6f4ec]/65 font-body leading-relaxed max-w-3xl">
+              Análise da comunicação dos principais players, formatos de webinar praticados no nicho e identificação do ângulo único da Greenole.
+            </p>
           </div>
         </div>
 
-        <div className="p-5 sm:p-6 rounded-xl bg-white/[0.03] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-[#c6ff4d]/30 transition-colors">
-          <div className="flex items-start gap-4">
-            <span className="font-display text-2xl sm:text-3xl font-bold text-[#c6ff4d] min-w-[2.5rem]">
-              03
-            </span>
-            <div>
-              <h3 className="font-display text-lg sm:text-xl font-semibold text-[#f6f4ec] flex items-center gap-2">
-                Planejamento Estratégico &amp; Roadmap do Lançamento
-              </h3>
-              <p className="mt-1 text-xs sm:text-sm text-[#f6f4ec]/65 font-body leading-relaxed max-w-2xl">
-                Definição da promessa central do webinar, estrutura do conteúdo, métricas estimadas de captação e calendário dia a dia até o evento.
-              </p>
-            </div>
-          </div>
-          <div className="shrink-0 flex sm:flex-col items-center sm:items-end gap-1 text-xs font-mono text-[#c6ff4d]">
-            <span>Roadmap Master</span>
-            <span className="text-[#f6f4ec]/40 hidden sm:inline">Cronograma Fechado</span>
+        <div className="p-5 sm:p-6 rounded-xl bg-white/[0.03] border border-white/10 flex items-start gap-4 hover:border-[#c6ff4d]/30 transition-colors">
+          <span className="font-display text-2xl sm:text-3xl font-bold text-[#c6ff4d] min-w-[2.5rem]">
+            03
+          </span>
+          <div>
+            <h3 className="font-display text-lg sm:text-xl font-semibold text-[#f6f4ec]">
+              Planejamento Estratégico &amp; Roadmap do Lançamento
+            </h3>
+            <p className="mt-1 text-xs sm:text-sm text-[#f6f4ec]/65 font-body leading-relaxed max-w-3xl">
+              Definição da promessa central do webinar, estrutura do conteúdo, métricas estimadas de captação e calendário dia a dia até o evento.
+            </p>
           </div>
         </div>
       </div>
